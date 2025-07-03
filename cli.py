@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
+"""A simple command-line interface to fetch weather information
+for a given location using the wttr.in service.
+"""
 
-import requests
 import sys
+import requests
 
 
 def main():
-
+    """Main function to fetch and display weather information."""
     if len(sys.argv) == 2:
         location = sys.argv[1]
     else:
@@ -14,7 +17,7 @@ def main():
 
     url = f"https://wttr.in/{location}"
 
-    response = requests.get(url)
+    response = requests.get(url, timeout=10)
     print(response.text)
 
 
